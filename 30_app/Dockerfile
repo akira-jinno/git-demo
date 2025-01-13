@@ -1,5 +1,11 @@
 FROM node:16-alpine
 
+# 必要なビルドツールをインストール
+# この行を追加: AlpineにPython、make、g++をインストール
+RUN apk add --no-cache python3 make g++ && \
+    python3 -m ensurepip && \
+    pip3 install --no-cache --upgrade pip
+
 COPY . /home/node/webapp
 
 RUN cd /home/node/webapp; \
