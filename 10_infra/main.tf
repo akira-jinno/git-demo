@@ -6,14 +6,14 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.0"
+      version = "~> 3.26"
     }
   }
   backend "s3" {
-    bucket  = "{YOUR-S3-BUCKET-NAME}"
-    key     = "{YOUR-S3-BUCKET-KEY}"
+    bucket  = "terraform-test-trfstate"
+    key     = "github-action_test.tfstate"
     region  = "ap-northeast-1"
-    profile = "terraform"
+    profile = "tf-sso_profile"
   }
 }
 
@@ -21,7 +21,7 @@ terraform {
 # Provider
 # ---------------------------------------------
 provider "aws" {
-  profile = "terraform"
+  profile = "tf-sso_profile"
   region  = "ap-northeast-1"
 }
 
